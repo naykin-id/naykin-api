@@ -25,7 +25,7 @@ if($count > 0){
         extract($row);
 
         $p  = array(
-              "id" => $id,
+              "id_read" => $id,
               "sku" => $sku,
               "barcode" => $barcode,
               "name" => $name,
