@@ -8,7 +8,7 @@ include_once '../entities/product.php';
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 
-$product = new Product($connection);
+$product = new Product($connection); 
 
 $stmt = $product->read();
 $count = $stmt->rowCount();
