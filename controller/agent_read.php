@@ -31,7 +31,7 @@ if($count > 0){
               "name" => $name,
               "price" => $price,
               "unit" => $unit,
-              "quantity" => $quantity,
+              "quantity" => $quantity, 
               "minquantity" => $minquantity,
               "createdAt" => $createdAt,
               "createdAt" => $createdAt,
