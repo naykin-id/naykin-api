@@ -3,47 +3,48 @@
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/dbclass.php';
-include_once '../entities/product.php';
+include_once '../services/agent.php';
 
 $dbclass = new DBClass();
 $connection = $dbclass->getConnection();
 
-$product = new Product($connection); 
+$agent = new Agent($connection); 
 
-$stmt = $product->read();
+$stmt = $agent->read();
 $count = $stmt->rowCount();
 
 if($count > 0){
 
 
-    $products = array();
-    $products["body"] = array();
-    $products["count"] = $count;
+    $agents = array();
+    $agents["body"] = array();
+    $agents["count"] = $count;
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
-
+        print_r(array_values($row));
         $p  = array(
-              "id_read" => $id,
-              "sku" => $sku,
-              "barcode" => $barcode,
-              "name" => $name,
-              "price" => $price,
-              "unit" => $unit,
-              "quantity" => $quantity, 
-              "minquantity" => $minquantity,
-              "createdAt" => $createdAt,
-              "createdAt" => $createdAt,
-              "updatedAt" => $updatedAt,
-              "family_id" => $family_id,
-              "location_id" => $location_id
+              "ID" => $id,
+              "IDManager" => $idManager,
+              "AgentName" => $agentName,
+              "Phone" => $phone,
+              "Email" => $email,
+              "Address" => $address,
+              "Longtitude" => $longtitude,
+              "Latitude" => $latitude,
+              "TotalVehicle" => $totalVehicle,
+              "RowStatus" => $rowStatus,
+              "CreatedDate" => $createdDate, 
+              "CreatedBy" => $createdBy,
+              "ModifiedDate" => $modifiedDate,
+              "ModifiedBy" => $modifiedBy
         );
 
-        array_push($products["body"], $p);
+        array_push($agents["body"], $p);
     }
 
-    echo json_encode($products);
+    echo json_encode($agents);
 }
 
 else {

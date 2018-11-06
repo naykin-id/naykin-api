@@ -36,7 +36,7 @@ class Agent{
     }
     //R
     public function read(){
-        $query = "SELECT a.ID, a.IDManager, a.AgentName, a.Phone, a.Email, a.Address, a.Longitude, a.Latitude, a.TotalVehicle, a.RowStatus, a.CreatedDate, a.CreatedBy, a.ModifiedDate, a.ModifiedBy FROM" . $this->table_name . " a WHERE a.RowSatatus = '0'";
+        $query = "SELECT a.ID, a.IDManager, a.AgentName, a.Phone, a.Email, a.Address, a.Longtitude, a.Latitude, a.TotalVehicle, a.RowStatus, a.CreatedDate, a.CreatedBy, a.ModifiedDate, a.ModifiedBy FROM ".$this->table_name." a WHERE a.RowStatus = '0'";
 
         $stmt = $this->connection->prepare($query);
 
@@ -46,7 +46,7 @@ class Agent{
     }
     //U
     public function update(){
-        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", Longitude = ".$longitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
+        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", longtitude = ".$longtitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
 
         $stmt = $this->connection->prepare($query);
 
