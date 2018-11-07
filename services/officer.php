@@ -18,8 +18,8 @@ public $address;
 public $rowStatus;
 public $createdDate;
 public $createdBy;
-public $updatedDate;
-public $updatedBy;
+public $modifiedDate;
+public $modifiedBy;
 public function __construct($connection){
 $this->connection = $connection;
 }

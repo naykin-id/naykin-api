@@ -25,7 +25,7 @@ class Agent{
     }
     //C
     public function create(){
-	date_default_timezone_set('Asia/Kolkata'); 
+	    date_default_timezone_set('Asia/Jakarta'); 
         $query = "INSERT INTO ". $this->table_name ." (IDManager, AgentName, Phone, Email, Address, Longtitude, Latitude, TotalVehicle, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->idManager."', '".$this->agentName."', '".$this->phone."', '".$this->email."', '".$this->address."', '".$this->longtitude."', '".$this->latitude."', ".$this->totalVehicle.", 0, '".date("Y-m-d")."', '".$this->createdBy."')";
 
         $stmt = $this->connection->prepare($query);
@@ -49,6 +49,7 @@ class Agent{
     }
     //U
     public function update(){
+        date_default_timezone_set('Asia/Jakarta');
         $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", longtitude = ".$longtitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
 
         $stmt = $this->connection->prepare($query);
