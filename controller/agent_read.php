@@ -23,22 +23,21 @@ if($count > 0){
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
-        print_r(array_values($row));
         $p  = array(
-              "ID" => $id,
-              "IDManager" => $idManager,
-              "AgentName" => $agentName,
-              "Phone" => $phone,
-              "Email" => $email,
-              "Address" => $address,
-              "Longtitude" => $longtitude,
-              "Latitude" => $latitude,
-              "TotalVehicle" => $totalVehicle,
-              "RowStatus" => $rowStatus,
-              "CreatedDate" => $createdDate, 
-              "CreatedBy" => $createdBy,
-              "ModifiedDate" => $modifiedDate,
-              "ModifiedBy" => $modifiedBy
+              "ID" => $row['ID'],
+              "IDManager" => $row['IDManager'],
+              "AgentName" => $row['AgentName'],
+              "Phone" => $row['Phone'],
+              "Email" => $row['Email'],
+              "Address" => $row['Address'],
+              "Longtitude" => $row['Longtitude'],
+              "Latitude" => $row['Latitude'],
+              "TotalVehicle" => $row['TotalVehicle'],
+              "RowStatus" => $row['RowStatus'],
+              "CreatedDate" => $row['CreatedDate'], 
+              "CreatedBy" => $row['CreatedBy'],
+              "ModifiedDate" => $row['ModifiedDate'],
+              "ModifiedBy" => $row['ModifiedBy']
         );
 
         array_push($agents["body"], $p);

@@ -38,9 +38,12 @@ class Agent{
     public function read(){
         $query = "SELECT a.ID, a.IDManager, a.AgentName, a.Phone, a.Email, a.Address, a.Longtitude, a.Latitude, a.TotalVehicle, a.RowStatus, a.CreatedDate, a.CreatedBy, a.ModifiedDate, a.ModifiedBy FROM ".$this->table_name." a WHERE a.RowStatus = '0'";
 
+        //PDO
         $stmt = $this->connection->prepare($query);
-
         $stmt->execute();
+
+        //biasa
+        // $result = $conn->query($query);
 
         return $stmt;
     }
