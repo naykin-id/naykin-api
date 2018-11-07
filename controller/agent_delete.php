@@ -18,17 +18,8 @@ $agent = new Agent($connection);
 $data = json_decode(file_get_contents("php://input"));
 
 $agent->id = $data->id;
-$agent->idManager = $data->idManager;
-$agent->agentName = $data->agentName;
-$agent->phone = $data->phone;
-$agent->email = $data->email;
-$agent->address = $data->address;
-$agent->longtitude = $data->longtitude;
-$agent->latitude = $data->latitude;
-$agent->totalVehicle = $data->totalVehicle;
-$agent->modifiedBy = $data->modifiedBy;
 
-if($agent->update()){
+if($agent->delete()){
     echo '{';
         echo '"message": "Product was updated."';
     echo '}';
