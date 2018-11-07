@@ -50,7 +50,7 @@ class Agent{
     //U
     public function update(){
         date_default_timezone_set('Asia/Jakarta');
-        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", longtitude = ".$longtitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
+        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", Longtitude = ".$longtitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
 
         $stmt = $this->connection->prepare($query);
 
