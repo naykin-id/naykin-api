@@ -3,7 +3,7 @@ class BusFleet{
 // Connection instance
 private $connection;
 // table name
-private $table_name = "bus_fleet";
+private $table_name = "BusFleet";
 // table columns
 public $id;
 public $idManager;
@@ -19,12 +19,12 @@ public $modifiedDate;
 public $modifiedBy;
 public function __construct($connection){
 $this->connection = $connection;
+date_default_timezone_set('Asia/Jakarta'); 
 }
 //C
 public function create(){
-    date_default_timezone_set('Asia/Jakarta'); 
-    $query = "INSERT INTO ". $this->table_name ." (IDManager, FleetName, Phone, Email, Address, TotalVehicle, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->idManager."', '".$this->fleetName."', '".$this->phone."', '".$this->email."', '".$this->address."', '".$this->totalVehicle.", 0, '".date("Y-m-d")."', '".$this->createdBy."')";
-
+    $query = "INSERT INTO ". $this->table_name ." (IDManager, FleetName, Phone, Email, Address, TotalVehicle, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->idManager."', '".$this->fleetName."', '".$this->phone."', '".$this->email."', '".$this->address."', '".$this->totalVehicle."', 0, '".date("Y-m-d H:i:s")."', '".$this->createdBy."')";
+    echo $query;
     $stmt = $this->connection->prepare($query);
     
     $stmt->execute();
@@ -46,8 +46,7 @@ public function read(){
 }
 //U
 public function update(){
-    date_default_timezone_set('Asia/Jakarta');
-    $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", FleetName = ".$fleetName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
+    $query = "UPDATE ". $this->table_name ." SET IDManager = '".$this->idManager."', FleetName = '".$this->fleetName."', Phone = '".$this->phone."', Email = '".$this->email."', Address = '".$this->address."', TotalVehicle = '".$this->totalVehicle."', ModifiedDate = '".date("Y-m-d H:i:s")."', ModifiedBy = '".$this->modifiedBy."' WHERE ID = '".$this->id."'";
 
     $stmt = $this->connection->prepare($query);
 
@@ -57,7 +56,7 @@ public function update(){
 }
 //D
 public function delete(){
-    $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = ".$id;
+    $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = '".$this->id."'";
 
     $stmt = $this->connection->prepare($query);
 
