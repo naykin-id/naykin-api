@@ -21,12 +21,12 @@ $agent->id = $data->id;
 
 if($agent->delete()){
     echo '{';
-        echo '"message": "Product was updated."';
+        echo '"message": "Agent was updated status."';
     echo '}';
 }
 else{
     echo '{';
-        echo '"message": "Unable to update product."';
+        echo '"message": "Unable to update status agent."';
     echo '}';
 }
 }

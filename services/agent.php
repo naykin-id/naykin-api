@@ -49,8 +49,8 @@ class Agent{
     }
     //U
     public function update(){
-        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$this->idManager.", AgentName = ".$this->agentName.", Phone = ".$this->phone.", Email = ".$this->email.", Address = ".$this->address.", Longtitude = ".$this->longtitude.", Latitude = ".$this->latitude.", TotalVehicle = ".$this->totalVehicle.", ModifiedDate = ".date("Y-m-d H:i:s").", ModifiedBy = ".$this->modifiedBy." WHERE ID = ".$this->id;
-
+        $query = "UPDATE ". $this->table_name ." SET IDManager = '".$this->idManager."', AgentName = '".$this->agentName."', Phone = '".$this->phone."', Email = '".$this->email."', Address = '".$this->address."', Longtitude = '".$this->longtitude."', Latitude = '".$this->latitude."', TotalVehicle = '".$this->totalVehicle."', ModifiedDate = '".date("Y-m-d H:i:s")."', ModifiedBy = '".$this->modifiedBy."' WHERE ID = '".$this->id."'";
+        
         $stmt = $this->connection->prepare($query);
 
         $stmt->execute();
@@ -59,7 +59,7 @@ class Agent{
     }
     //D
     public function delete(){
-        $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = ".$id;
+        $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = '".$this->id."'";
 
         $stmt = $this->connection->prepare($query);
 
