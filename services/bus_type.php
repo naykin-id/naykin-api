@@ -3,7 +3,7 @@ class BusType{
 // Connection instance
 private $connection;
 // table name
-private $table_name = "bus_type";
+private $table_name = "BusType";
 // table columns
 public $id;
 public $type;
@@ -15,11 +15,11 @@ public $modifiedDate;
 public $modifiedBy;
 public function __construct($connection){
 $this->connection = $connection;
+date_default_timezone_set('Asia/Jakarta'); 
 }
 //C
 public function create(){
-    date_default_timezone_set('Asia/Jakarta'); 
-    $query = "INSERT INTO ". $this->table_name ." (Type, Capacity, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->type."', '".$this->capacity."', '".", 0, '".date("Y-m-d")."', '".$this->createdBy."')";
+    $query = "INSERT INTO ". $this->table_name ." (Type, Capacity, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->type."', '".$this->capacity."', 0, '".date("Y-m-d H:i:s")."', '".$this->createdBy."')";
 
     $stmt = $this->connection->prepare($query);
     
@@ -42,8 +42,7 @@ public function read(){
 }
 //U
 public function update(){
-    date_default_timezone_set('Asia/Jakarta');
-    $query = "UPDATE ". $this->table_name ." SET Type = ".$type.", Capacity = ".$capacity.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
+    $query = "UPDATE ". $this->table_name ." SET Type = '".$this->type."', Capacity = '".$this->capacity."', ModifiedDate = '".date("Y-m-d H:i:s")."', ModifiedBy = '".$this->modifiedBy."' WHERE ID = '".$this->id."'";
 
     $stmt = $this->connection->prepare($query);
 
@@ -53,7 +52,7 @@ public function update(){
 }
 //D
 public function delete(){
-    $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = ".$id;
+    $query = "UPDATE ". $this->table_name ." SET RowStatus = '-1' WHERE ID = '".$this->id."'";
 
     $stmt = $this->connection->prepare($query);
 
