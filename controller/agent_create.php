@@ -28,12 +28,12 @@ $agent->createdBy = $data->createdBy;
 
 if($agent->create()){
     echo '{';
-        echo '"message": "Product was created."';
+        echo '"message": "Agent was created."';
     echo '}';
 }
 else{
     echo '{';
-        echo '"message": "Unable to create product."';
+        echo '"message": "Unable to create agent."';
     echo '}';
 }
 }

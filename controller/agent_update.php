@@ -30,12 +30,12 @@ $agent->modifiedBy = $data->modifiedBy;
 
 if($agent->update()){
     echo '{';
-        echo '"message": "Product was updated."';
+        echo '"message": "Agent was updated."';
     echo '}';
 }
 else{
     echo '{';
-        echo '"message": "Unable to update product."';
+        echo '"message": "Unable to update agent."';
     echo '}';
 }
 }

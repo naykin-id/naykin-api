@@ -22,11 +22,11 @@ class Agent{
 	// public $now = new DateTime();
     public function __construct($connection){
     $this->connection = $connection;
+    date_default_timezone_set('Asia/Jakarta'); 
     }
     //C
     public function create(){
-	    date_default_timezone_set('Asia/Jakarta'); 
-        $query = "INSERT INTO ". $this->table_name ." (IDManager, AgentName, Phone, Email, Address, Longtitude, Latitude, TotalVehicle, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->idManager."', '".$this->agentName."', '".$this->phone."', '".$this->email."', '".$this->address."', '".$this->longtitude."', '".$this->latitude."', ".$this->totalVehicle.", 0, '".date("Y-m-d")."', '".$this->createdBy."')";
+        $query = "INSERT INTO ". $this->table_name ." (IDManager, AgentName, Phone, Email, Address, Longtitude, Latitude, TotalVehicle, RowStatus, CreatedDate, CreatedBy) VALUES ('".$this->idManager."', '".$this->agentName."', '".$this->phone."', '".$this->email."', '".$this->address."', '".$this->longtitude."', '".$this->latitude."', ".$this->totalVehicle.", 0, '".date("Y-m-d H:i:s")."', '".$this->createdBy."')";
 
         $stmt = $this->connection->prepare($query);
 		
@@ -49,8 +49,7 @@ class Agent{
     }
     //U
     public function update(){
-        date_default_timezone_set('Asia/Jakarta');
-        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$idManager.", AgentName = ".$agentName.", Phone = ".$phone.", Email = ".$email.", Address = ".$address.", Longtitude = ".$longtitude.", Latitude = ".$latitude.", TotalVehicle = ".$totalVehicle.", ModifiedDate = ".new Date().", ModifiedBy = ".$modifiedBy." WHERE ID = ".$id;
+        $query = "UPDATE ". $this->table_name ." SET IDManager = ".$this->idManager.", AgentName = ".$this->agentName.", Phone = ".$this->phone.", Email = ".$this->email.", Address = ".$this->address.", Longtitude = ".$this->longtitude.", Latitude = ".$this->latitude.", TotalVehicle = ".$this->totalVehicle.", ModifiedDate = ".date("Y-m-d H:i:s").", ModifiedBy = ".$this->modifiedBy." WHERE ID = ".$this->id;
 
         $stmt = $this->connection->prepare($query);
 
